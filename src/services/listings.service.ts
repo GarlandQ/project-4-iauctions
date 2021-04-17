@@ -6,9 +6,11 @@ import Comment from 'models/comments.model';
 import Bid from 'models/bids.model';
 import { isEmpty } from 'class-validator';
 import { HttpException } from 'utils/util';
+import CreateCommentDto from 'dtos/comments.dtos';
 
 class ListingService {
   public listings = Listing;
+  public comments = Comment;
 
   public async list(): Promise<Listing[]> {
     const listings: Listing[] = await this.listings.findAll();
@@ -47,6 +49,12 @@ class ListingService {
     await this.listings.destroy({ where: { id: listingId } });
 
     return findListing;
+  }
+
+  // Create comment on listing id
+  public async createComment(listingId: number, commentData: CreateCommentDto, user: User): Promise<Comment> {
+    const createdComment = await this.comments.create({ ...commentData, userId: user.id, listingId: listingId });
+    return createdComment;
   }
 }
 

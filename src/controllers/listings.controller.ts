@@ -4,6 +4,7 @@ import Listing from 'models/listings.model';
 import CreateListingDto from 'dtos/listings.dtos';
 import { RequestWithUser } from 'interfaces/auth.interface';
 import { HttpException } from 'utils/util';
+import CreateCommentDto from 'dtos/comments.dtos';
 
 class ListingsController {
   public service = new service();
@@ -76,6 +77,19 @@ class ListingsController {
 
       const deleteListingData: Listing = await this.service.deleteList(listingId);
       res.status(204).json({ data: deleteListingData, message: 'deleted' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  // Create comment
+  public createComment = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    const listingId = Number(req.params.id);
+    const data: CreateCommentDto = req.body;
+
+    try {
+      const createOne = await this.service.createComment(listingId, data, req.user);
+      res.status(201).json({ data: createOne, message: 'created' });
     } catch (error) {
       next(error);
     }

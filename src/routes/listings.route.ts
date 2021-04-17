@@ -7,6 +7,7 @@ import authMiddleware from 'middlewares/auth.middleware';
 import resourceExistenceMiddleware from 'middlewares/resource-existence.middleware';
 import { ModelDefined } from 'sequelize';
 import Listing from 'models/listings.model';
+import CreateCommentDto from 'dtos/comments.dtos';
 
 export default class ListingsRoute implements Route {
   public path = '/listings';
@@ -50,6 +51,14 @@ export default class ListingsRoute implements Route {
       authMiddleware,
       resourceExistenceMiddleware(Listing as ModelDefined<any, any>),
       this.controller.deleteList,
+    );
+
+    // Comment POST request on list id
+    this.router.post(
+      this.makeRoute('/:id(\\d+)/comments'),
+      authMiddleware,
+      validationMiddleware(CreateCommentDto, 'body'),
+      this.controller.createComment,
     );
   }
 
