@@ -27,7 +27,7 @@ an auth token
 
 ### CATEGORIES
 
-- [ ] A user can get a list of categories by submitting a GET request to /categories/
+- [X] A user can get a list of categories by submitting a GET request to /categories/
   - SAMPLE RESPONSE
 
   ```json
@@ -47,7 +47,7 @@ an auth token
     ]
   ```
 
-- [ ] A user can create a category by submitting a POST request to /categories/
+- [X] A user can create a category by submitting a POST request to /categories/
   - SAMPLE REQUEST
 
   ```json
@@ -91,7 +91,7 @@ an auth token
     }
   ```
 
-- [ ] A user can get a modify a category by submitting a PATCH request to /category/id/.
+- [X] A user can get a modify a category by submitting a PATCH request to /category/id/.
   - SAMPLE REQUEST
 
   ```json
@@ -111,7 +111,7 @@ an auth token
     }
   ```
 
-- [ ] A user can delete a category by submitting a DELETE request to /categories/id. The endpoint should return the deleted category or 204 NO CONTENT
+- [X] A user can delete a category by submitting a DELETE request to /categories/id. The endpoint should return the deleted category or 204 NO CONTENT
 
 ### LISTINGS
 
