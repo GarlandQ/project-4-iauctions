@@ -8,6 +8,7 @@ import resourceExistenceMiddleware from 'middlewares/resource-existence.middlewa
 import { ModelDefined } from 'sequelize';
 import Listing from 'models/listings.model';
 import CreateCommentDto from 'dtos/comments.dtos';
+import CreateBidDto from 'dtos/bids.dtos';
 
 export default class ListingsRoute implements Route {
   public path = '/listings';
@@ -59,6 +60,14 @@ export default class ListingsRoute implements Route {
       authMiddleware,
       validationMiddleware(CreateCommentDto, 'body'),
       this.controller.createComment,
+    );
+
+    // Bid POST request on list id
+    this.router.post(
+      this.makeRoute('/:id(\\d+)/bids'),
+      authMiddleware,
+      validationMiddleware(CreateBidDto, 'body'),
+      this.controller.createBid,
     );
   }
 

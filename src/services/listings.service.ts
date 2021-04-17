@@ -7,13 +7,17 @@ import Bid from 'models/bids.model';
 import { isEmpty } from 'class-validator';
 import { HttpException } from 'utils/util';
 import CreateCommentDto from 'dtos/comments.dtos';
+import CreateBidDto from 'dtos/bids.dtos';
 
 class ListingService {
   public listings = Listing;
   public comments = Comment;
+  public bids = Bid;
 
   public async list(): Promise<Listing[]> {
-    const listings: Listing[] = await this.listings.findAll();
+    const listings: Listing[] = await this.listings.findAll({
+      include: [Comment as ModelDefined<any, any>, Bid as ModelDefined<any, any>],
+    });
     return listings;
   }
 
@@ -55,6 +59,12 @@ class ListingService {
   public async createComment(listingId: number, commentData: CreateCommentDto, user: User): Promise<Comment> {
     const createdComment = await this.comments.create({ ...commentData, userId: user.id, listingId: listingId });
     return createdComment;
+  }
+
+  // Create bid on listing id
+  public async createBid(listingId: number, bidData: CreateBidDto, user: User): Promise<Bid> {
+    const createdBid = await this.bids.create({ ...bidData, userId: user.id, listingId: listingId });
+    return createdBid;
   }
 }
 
