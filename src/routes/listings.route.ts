@@ -34,6 +34,23 @@ export default class ListingsRoute implements Route {
       resourceExistenceMiddleware(Listing as ModelDefined<any, any>),
       this.controller.getListById,
     );
+
+    // Patch request on list id
+    this.router.patch(
+      this.makeRoute('/:id(\\d+)'),
+      authMiddleware,
+      resourceExistenceMiddleware(Listing as ModelDefined<any, any>),
+      validationMiddleware(CreateListingDto, 'body', true),
+      this.controller.updateList,
+    );
+
+    // Delete request on list id
+    this.router.delete(
+      this.makeRoute('/:id(\\d+)'),
+      authMiddleware,
+      resourceExistenceMiddleware(Listing as ModelDefined<any, any>),
+      this.controller.deleteList,
+    );
   }
 
   public makeRoute(route: string) {

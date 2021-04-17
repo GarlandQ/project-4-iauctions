@@ -12,7 +12,7 @@ export default class CreateListingDto {
   @IsString()
   public description: string;
 
-  // Categories
+  // Optional Categories
   @IsOptional()
   @IsNumber()
   public categoryId: number;
