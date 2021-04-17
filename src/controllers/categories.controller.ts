@@ -46,12 +46,6 @@ class CategoriesController {
     const categoryData: CreateCategoryDto = req.body;
 
     try {
-      const findCategory = await this.categoryService.findCategoryById(categoryId);
-      if (req.name.id !== findCategory.id) {
-        next(new HttpException(403, 'Not allowed'));
-        return;
-      }
-
       const updateCategoryData: Category = await this.categoryService.updateCategory(categoryId, categoryData);
       res.status(200).json({ data: updateCategoryData, message: 'updated' });
     } catch (error) {
@@ -64,11 +58,6 @@ class CategoriesController {
     const categoryId = Number(req.params.id);
 
     try {
-      const findCategory = await this.categoryService.findCategoryById(categoryId);
-      if (req.name.id != findCategory.id) {
-        next(new HttpException(403, 'Not allowed'));
-        return;
-      }
       const deleteCategoryData: Category = await this.categoryService.deleteCategoryData(categoryId);
       res.status(204).json({ data: deleteCategoryData, message: 'deleted' });
     } catch (error) {

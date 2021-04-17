@@ -17,5 +17,5 @@ export interface RequestWithUser extends Request {
 }
 
 export interface RequestWithCategory extends Request {
-  name: Category;
+  category: Category;
 }
