@@ -13,6 +13,7 @@ import {
 import User from 'models/users.model';
 import Comment from 'models/comments.model';
 import Bid from 'models/bids.model';
+import Category from 'models/categories.model';
 
 export interface ListingAttributes {
   id: number;
@@ -20,9 +21,10 @@ export interface ListingAttributes {
   price: number;
   description: string;
   userId: number;
+  categoryId: number;
 }
 
-export type ListingCreationAttributes = Optional<ListingAttributes, 'id' | 'description'>;
+export type ListingCreationAttributes = Optional<ListingAttributes, 'id' | 'description' | 'categoryId'>;
 
 @Table({
   timestamps: true,
@@ -65,4 +67,6 @@ export default class Listing extends Model<ListingAttributes, ListingCreationAtt
   // listingId refers to a field on the Comment table
   @HasMany(() => Comment, 'listingId')
   comments: Comment[];
+
+  // listing relation to categories
 }

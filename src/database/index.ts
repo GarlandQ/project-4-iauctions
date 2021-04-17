@@ -4,6 +4,7 @@ import Listing from 'models/listings.model';
 import User from 'models/users.model';
 import Bid from 'models/bids.model';
 import Comment from 'models/comments.model';
+import Category from 'models/categories.model';
 import logger from 'utils/logger';
 
 const env = process.env.NODE_ENV || 'development';
@@ -32,6 +33,6 @@ sequelize
     logger.info(`🔴 Unable to connect to the database: ${error}.`);
   });
 
-sequelize.addModels([User, Listing, Bid, Comment]);
+sequelize.addModels([User, Listing, Bid, Comment, Category]);
 
 export default sequelize;

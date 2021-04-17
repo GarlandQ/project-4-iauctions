@@ -26,6 +26,18 @@ class ListingsController {
       next(error);
     }
   };
+
+  // Get listing by id
+  public getListById = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    const listingId = Number(req.params.id);
+
+    try {
+      const findOneListData: Listing = await this.service.findListById(listingId);
+      res.status(200).json({ data: findOneListData, message: 'findOne' });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default ListingsController;
