@@ -1,19 +1,23 @@
 import Category from 'models/categories.model';
 import CreateCategoryDto from 'dtos/categories.dtos';
-// import { ModelDefined } from 'sequelize';
-// import Listing from 'models/listings.model';
+import { ModelDefined } from 'sequelize';
+import Listing from 'models/listings.model';
 import { isEmpty, HttpException } from 'utils/util';
 
 class CategoryService {
   public categories = Category;
 
   public async findAllCategory(): Promise<Category[]> {
-    const allCategory: Category[] = await this.categories.findAll();
+    const allCategory: Category[] = await this.categories.findAll({
+      include: [Listing as ModelDefined<any, any>],
+    });
     return allCategory;
   }
 
   public async findCategoryById(categoryId: number): Promise<Category> {
-    const findCategory: Category = await this.categories.findByPk(categoryId);
+    const findCategory: Category = await this.categories.findByPk(categoryId, {
+      include: [Listing as ModelDefined<any, any>],
+    });
     return findCategory;
   }
 
