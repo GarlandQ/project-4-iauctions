@@ -1,9 +1,9 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=4554580&assignment_repo_type=AssignmentRepo)
-# Project 3 | **iAuctions-api**
+# Project 4 | **iAuctions-api**
 
 **iAuctions-api** - iAuctions-api is a RESTful api to an eBay-like e-commerce auction site that will allow users to post auction listings, categorize listings, place bids on listings and comment on those listings.
 
-Time spent: **XX** hours spent in total
+Time spent: **~6** hours spent in total
 
 ## User Stories
 
@@ -15,7 +15,7 @@ The following **required** functionality is completed:
 an auth token
 - [X] A user can `login` to the api by submitting a POST request to /login/ containing an email an password of a valid user. The endpoint should return
 an auth token
-- [ ] All endpoints except the `login` and `signup` endpoints require a valid Authorization token in the request Headers as a Bearer Token
+- [X] All endpoints except the `login` and `signup` endpoints require a valid Authorization token in the request Headers as a Bearer Token
 
 ### USERS
 
@@ -67,7 +67,7 @@ an auth token
     }
   ```
 
-- [ ] A user can get a details about a category by submitting a GET request to /categories/id. The Response should contain any listings associated with that category
+- [X] A user can get a details about a category by submitting a GET request to /categories/id. The Response should contain any listings associated with that category
   - SAMPLE RESPONSE
 
   ```json
@@ -143,7 +143,7 @@ an auth token
     ]
   ```
 
-- [ ] A user can create a listing by submitting a POST request to /listings/
+- [X] A user can create a listing by submitting a POST request to /listings/
   - SAMPLE REQUEST (description and category are optional)
 
   ```json
@@ -170,7 +170,7 @@ an auth token
     },
   ```
 
-- [ ] A user can get a details about a listing by submitting a GET request to /listings/id. The Response should contain any comments & bids
+- [X] A user can get a details about a listing by submitting a GET request to /listings/id. The Response should contain any comments & bids
   - SAMPLE RESPONSE
 
   ```json
@@ -206,7 +206,7 @@ an auth token
     }
   ```
 
-- [ ] A user can get a modify a listing by submitting a PATCH request to /listings/id. A user can only edit her own listings.
+- [X] A user can get a modify a listing by submitting a PATCH request to /listings/id. A user can only edit her own listings.
   - SAMPLE REQUEST
 
   ```json
@@ -230,9 +230,9 @@ an auth token
     },
   ```
 
-- [ ] A user can delete a listing by submitting a DELETE request to /listings/id. The endpoint should return the deleted listing or 204 NO CONTENT
+- [X] A user can delete a listing by submitting a DELETE request to /listings/id. The endpoint should return the deleted listing or 204 NO CONTENT
 
-- [ ] A user can create add a comment to a listing by submitting a POST request to /listings/id/comments/. The comment is automatically associated with the user who submitted the comment
+- [X] A user can create add a comment to a listing by submitting a POST request to /listings/id/comments/. The comment is automatically associated with the user who submitted the comment
   - SAMPLE REQUEST
 
   ```json
@@ -276,7 +276,7 @@ an auth token
     }
   ```
 
-- [ ] A user can create add a bid to a listing by submitting a POST request to /listings/id/bids/. The bid is automatically associated with the user who submitted the bid. If the bid amount is less than or equal to the listing price, the request is rejected and an error message is returned. If the bid amount is greater than the listing price, the bid is saved and the listing price is updated to the bid amount
+- [X] A user can create add a bid to a listing by submitting a POST request to /listings/id/bids/. The bid is automatically associated with the user who submitted the bid. If the bid amount is less than or equal to the listing price, the request is rejected and an error message is returned. If the bid amount is greater than the listing price, the bid is saved and the listing price is updated to the bid amount
   - SAMPLE REQUEST
 
   ```json
@@ -328,19 +328,23 @@ The following **optional** functionality is completed:
 
 ## TESTING
 
-Lines Code Coverage: [insert_coverage_here]
+Lines Code Coverage: 69%
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='[insert_gif_source_here]' title='Video Walkthrough' alt='Video Walkthrough' />
+[<img src="https://img.youtube.com/vi/wYnXVdxWgJY/maxresdefault.jpg" width="50%">](https://youtu.be/wYnXVdxWgJY)
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+When it came to this project, there was not much challenging aspects as previous projects and assignments covered many of the basics of the methods used
+for this project. Aside from learning how all the models and functions work together to create the API, implementing the user stories did not seem much
+of an issue afterwards.
+
 
 ## License
 
