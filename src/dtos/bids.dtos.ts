@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 // Data transfer object for validation
 export default class CreateBidDto {

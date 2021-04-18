@@ -1,7 +1,7 @@
 import Category from 'models/categories.model';
 import CreateCategoryDto from 'dtos/categories.dtos';
-import { ModelDefined } from 'sequelize';
-import Listing from 'models/listings.model';
+// import { ModelDefined } from 'sequelize';
+// import Listing from 'models/listings.model';
 import { isEmpty, HttpException } from 'utils/util';
 
 class CategoryService {

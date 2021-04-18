@@ -3,7 +3,6 @@ import { RequestWithUser, RequestWithCategory } from 'interfaces/auth.interface'
 import CreateCategoryDto from 'dtos/categories.dtos';
 import Category from 'models/categories.model';
 import CategoryService from 'services/categories.service';
-import { HttpException } from 'utils/util';
 
 class CategoriesController {
   public categoryService = new CategoryService();

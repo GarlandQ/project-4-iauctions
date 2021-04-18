@@ -58,6 +58,14 @@ export default class Listing extends Model<ListingAttributes, ListingCreationAtt
   @BelongsTo(() => User, 'userId')
   user: User;
 
+  // listing relation to categorie
+  @ForeignKey(() => Category)
+  @Column
+  public categoryId: number;
+
+  @BelongsTo(() => Category, 'categoryId')
+  category: Category;
+
   // for hasMany:
   // listingId refers to a field on the Bid table
   @HasMany(() => Bid, 'listingId')
@@ -67,6 +75,4 @@ export default class Listing extends Model<ListingAttributes, ListingCreationAtt
   // listingId refers to a field on the Comment table
   @HasMany(() => Comment, 'listingId')
   comments: Comment[];
-
-  // listing relation to categories
 }

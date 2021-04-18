@@ -1,15 +1,5 @@
 import { Optional } from 'sequelize';
-import {
-  Model,
-  Table,
-  Column,
-  DataType,
-  NotEmpty,
-  AllowNull,
-  ForeignKey,
-  BelongsTo,
-  HasMany,
-} from 'sequelize-typescript';
+import { Model, Table, Column, DataType, NotEmpty, HasMany } from 'sequelize-typescript';
 import Listing from 'models/listings.model';
 
 export interface CategoryAttributes {
@@ -31,4 +21,6 @@ export default class Category extends Model<CategoryAttributes, CategoryCreation
   public name: string;
 
   // One category can have many Listings
+  @HasMany(() => Listing, 'categoryId')
+  listings: Listing[];
 }
